@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="easterling94">
+<meta name="description" content="Generic landing page for any usage">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generic landing page</title>
+<link rel="stylesheet" href="glp.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<script src="glp.js"></script>
+</head>
+<body class="bodyClass">
+
+<header>
+	<svg id="burger" width="45" height="45">
+		<line x1="0" x2="45" y1="15" y2="15" stroke="black" stroke-width="5"/>
+		<line x1="0" x2="45" y1="30" y2="30" stroke="black" stroke-width="5"/>
+	</svg>
+	<a href="./index.html">
+		<img src="Images/Logos/logo2.svg" alt="targorithmLogo" width="200" height="45">
+	</a>
+	<nav>
+		<div><a href=#services>SERVICES</a></div>
+		<div><a href=#clients>CLIENTS</a></div>
+		<div><a href=#FAQ>FAQ</a></div>
+		<div><a href=#contacts>CONTACTS</a></div>
+	</nav>
+</header>
+
+<div id="sideBar">
+	<div class="sideBarLeft">
+		<div>&times;</div>
+		<div>
+			<div><a href=#services>SERVICES</a></div>
+			<div><a href=#clients>CLIENTS</a></div>
+			<div><a href=#FAQ>FAQ</a></div>
+			<div><a href=#contacts>CONTACTS</a></div>
+		</div>
+		<div id="logoItems">
+			<div>
+				<a href="https://t.me/" target="_blank" rel="noopener"><img src="Images/Logos/logoTelegram.svg" alt="telegram logo" width="30" height="30"></a>
+				<a href="https://instagram.com" target="_blank" rel="noopener"><img src="Images/Logos/logoInstagram.png" alt="instagram logo" width="30" height="30"></a>
+			</div>
+		</div>
+	</div>
+	<div class="sideBarRight"></div>
+</div>
+
+<svg id="returnUp" width="60" height="60" onclick="returnUp()" style="cursor: pointer;">
+	<defs>
+		<radialGradient id="fadeReturnUp">
+			<stop offset="40%" style="stop-color: rgb(0, 0, 0)" />
+			<stop offset="100%" style="stop-color: rgb(255, 255, 255); stop-opacity: 0;" />
+		</radialGradient>
+	</defs>
+	<circle cx="30" cy="30" r="30" fill="url('#fadeReturnUp')" />
+	<circle cx="30" cy="30" r="20" style="fill: rgb(255, 255, 255);"/>
+	<path d="M19 35 L 30 25 L 41 35" style="fill: none; stroke: rgb(155, 155, 155); stroke-width: 4;" />
+</svg>
+<div class="introSec">
+	<div class="introSecWrapper">
+		<div class="subIntroSec">
+			<h2>MAIN HEADER<span> FOR ATTENTION</span></h2>
+			<h3>Sub header / short description</h3>
+			<ul>
+				<li>#1 main goal</li>
+				<li>#2 main goal</li>
+				<li>#3 main goal</li>
+				<li>#4 main goal</li>
+			</ul>
+		</div>
+		<div class="subIntroPic">
+			<img id="subIntroPicImg" src="Images/introSec.jpg" alt="Image for attention in the intro section" width="448" height="350">
+		</div>
+	</div>
+	<div class="introSecButton" onclick="scrollToContacts()">Contact us</div>
+</div>
+<div class="bodyInfo">
+	<div id="aboutUs" class="bodySec" style="scroll-margin-top: 80px;">
+		<div class="containerCEO">
+			<figure>
+				<img id="photoBoss" src="Images/boss.jpeg" alt="John Doe CEO YourCompany" width="600" height="350">
+			</figure>
+			<div class="citationCEO">
+				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, assumenda!</p>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam facilis libero ipsam esse inventore quis similique iusto voluptatibus commodi quod!</p>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente eos cupiditate cum iusto inventore amet?</p>
+				<p class="signature"><strong>John Doe</strong><br><span>Co-founder & CEO of YourCompany, LLC</span></p>
+			</div>
+		</div>
+		<div>
+		</div>
+	</div>
+	<div id="services" class="bodySec" style="scroll-margin-top: 80px;">
+		<h2>SERVICES</h2>
+		<div class="formWrapper">
+			<div class="formTitle">
+				<div class="titleName serviceChosen" id="titleFacebook" onclick="changeServicePlanToFacebook()">Service Type A</div>
+				<div class="titleName serviceNotChosen" id="titleVK" onclick="changeServicePlanToVk()">Service Type B</div>
+			</div>
+			<div class="formContent">
+				<div id="formBoxFacebook">
+					<div class="formContentFacebook">
+						<div class="contentDescription">
+							<div>
+								<div class="descriptionName">Sub type 1</div>
+								<div class="descriptionDuration">Sub type 1 duration X days</div>
+								<ul class="descriptionList">
+									<li>Service Description point 1</li>
+									<li>Service Description point 2</li>
+									<li>Service Description point 3</li>
+								</ul>
+							</div>
+							<div>
+								<div class="descriptionPrice">XXX &#36;</div>
+								<div class="buttonMore" id="moreFBNew" onclick="unfoldMoreDescription(this.id)">See more</div>
+								<div class="moreDescription">
+									<div>
+										<ul>
+											<li>More detailed description Service Type A, Sub type 1, point 1</li>
+											<li>More detailed description Service Type A, Sub type 1, point 2</li>
+											<li>More detailed description Service Type A, Sub type 1, point 3</li>
+											<li>More detailed description Service Type A, Sub type 1, point 4</li>
+											<li>More detailed description Service Type A, Sub type 1, point 5</li>
+											<li>More detailed description Service Type A, Sub type 1, point 6</li>
+											<li>More detailed description Service Type A, Sub type 1, point 7</li>
+											<li>More detailed description Service Type A, Sub type 1, point 8</li>
+											<li>More detailed description Service Type A, Sub type 1, point 9</li>
+										</ul>
+										<span onclick="closeModal()">&times;</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="contentDescription">
+							<div>
+								<div class="descriptionName">Sub type 2</div>
+								<div class="descriptionDuration">Sub type 2 duration X days</div>
+								<ul class="descriptionList"> 
+									<li>Service Description point 1</li>
+									<li>Service Description point 2</li>
+									<li>Service Description point 3</li>
+								</ul>
+							</div>
+							<div>
+								<div class="descriptionPrice">X XXX &#36;</div>
+								<div class="buttonMore" id="moreFBOld" onclick="unfoldMoreDescription(this.id)">See more</div>
+								<div class="moreDescription">
+									<div>
+										<ul>
+											<li>More detailed description Service Type A, Sub type 2, point 1</li>
+											<li>More detailed description Service Type A, Sub type 2, point 2</li>
+											<li>More detailed description Service Type A, Sub type 2, point 3</li>
+											<li>More detailed description Service Type A, Sub type 2, point 4</li>
+											<li>More detailed description Service Type A, Sub type 2, point 5</li>
+											<li>More detailed description Service Type A, Sub type 2, point 6</li>
+											<li>More detailed description Service Type A, Sub type 2, point 7</li>
+											<li>More detailed description Service Type A, Sub type 2, point 8</li>
+											<li>More detailed description Service Type A, Sub type 2, point 9</li>
+										</ul>
+										<span onclick="closeModal()">&times;</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="formBoxVK">
+					<div class="formContentVK">
+						<div class="contentDescription">
+							<div>
+								<div class="descriptionName">Sub type 1</div>
+								<div class="descriptionDuration">Sub type 1 duration X days</div>
+								<ul class="descriptionList">
+									<li>Service Description point 1</li>
+									<li>Service Description point 2</li>
+									<li>Service Description point 3</li>
+								</ul>
+							</div>
+							<div>
+								<div class="descriptionPrice">X XXX &#36;</div>
+								<div class="buttonMore" id="moreVKNew" onclick="unfoldMoreDescription(this.id)">See more</div>
+								<div class="moreDescription">
+									<div>
+										<ul>
+											<li>More detailed description Service Type B, Sub type 1, point 1</li>
+											<li>More detailed description Service Type B, Sub type 1, point 2</li>
+											<li>More detailed description Service Type B, Sub type 1, point 3</li>
+											<li>More detailed description Service Type B, Sub type 1, point 4</li>
+											<li>More detailed description Service Type B, Sub type 1, point 5</li>
+											<li>More detailed description Service Type B, Sub type 1, point 6</li>
+											<li>More detailed description Service Type B, Sub type 1, point 7</li>
+											<li>More detailed description Service Type B, Sub type 1, point 8</li>
+											<li>More detailed description Service Type B, Sub type 1, point 9</li>
+										</ul>
+										<span onclick="closeModal()">&times;</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="contentDescription">
+							<div>
+								<div class="descriptionName">Sub type 2</div>
+								<div class="descriptionDuration">Sub type 2 duration X days</div>
+								<ul class="descriptionList"> 
+									<li>Service Description point 1</li>
+									<li>Service Description point 2</li>
+									<li>Service Description point 3</li>
+								</ul>
+							</div>
+							<div>
+								<div class="descriptionPrice">X XXX &#36;</div>
+								<div class="buttonMore" id="moreVKOld" onclick="unfoldMoreDescription(this.id)">See more</div>
+								<div class="moreDescription">
+									<div>
+										<ul>
+											<li>More detailed description Service Type B, Sub type 2, point 1</li>
+											<li>More detailed description Service Type B, Sub type 2, point 2</li>
+											<li>More detailed description Service Type B, Sub type 2, point 3</li>
+											<li>More detailed description Service Type B, Sub type 2, point 4</li>
+											<li>More detailed description Service Type B, Sub type 2, point 5</li>
+											<li>More detailed description Service Type B, Sub type 2, point 6</li>
+											<li>More detailed description Service Type B, Sub type 2, point 7</li>
+											<li>More detailed description Service Type B, Sub type 2, point 8</li>
+											<li>More detailed description Service Type B, Sub type 2, point 9</li>
+										</ul>
+										<span onclick="closeModal()">&times;</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+	</div>
+	<!-- 
+		CAROUSEL BLOCK STARTS
+	-->
+	<div id="clients" class="bodySec" style="scroll-margin-top: 80px;">
+		<h2>Клиенты</h2>
+		<h3>Ознакомьтесь с успешно реализованными кейсами</h3>
+		<div class="carouselWrapperMain">
+			<svg width="35" height="60" id="carBtnLeft">
+				<path d="M23 13 L 10 30 L 23 45" style="fill: none; stroke: rgb(255, 255, 255); stroke-width: 2;"></path>
+			</svg>
+			<div id="carouselWrapper">
+				<div class="carouselWrapper">
+					<div class="carouselImg carouselImg1"></div>
+					<div class="carouselImg carouselImg2"></div>
+					<div class="carouselImg carouselImg3"></div>
+					<div class="carouselImg carouselImg4"></div>
+					<div class="carouselImg carouselImg5"></div>
+					<div class="carouselImg carouselImg6"></div>
+				</div>
+			</div>
+			<svg width="35" height="60" id="carBtnRight">
+				<path d="M12 15 L 25 30 L 12 45" style="fill: none; stroke: rgb(255, 255, 255); stroke-width: 2;"></path>
+			</svg>
+			<div class="carouselNavigation">
+				<div class="carouselNavigationActive"></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+	<!-- 
+		FAQ BLOCK STARTS
+	-->
+	<div id="FAQ" class="bodySec" style="scroll-margin-top: 80px;">
+		<h2>Часто задаваемые вопросы</h2>
+		<div id="wrapperFaqID" class="wrapperFaq">
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Гарантирует ли таргетинг увеличение конверсии?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">Как правило, таргетинг помогает увеличить конверсию продаж. Однако, другие не менее важные факторы, например профессиональный уровень персонала заказчика, также влияют на объем продаж.</div>
+			</div>
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Какие показатели самые главные в таргетинге?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">Кликабельность (CTR) и окупаемость (ROMI) рекламы.</div>
+			</div>
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Почему Instagram находится в рамках Facebook?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">Instagram принадлежит корпорации Facebook, поэтому все управление рекламой осуществляется через единые инструменты.</div>
+			</div>
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Может ли реклама в соцсетях расширить мой бизнес?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">В соцсетях вы можете связаться со своими клиентами из различных географических регионов с помощью таргетированной рекламы.</div>	
+			</div>
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Кому будет показываться моя реклама?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">Таргетинг предполагает показ вашей рекламы соответствующей целевой аудитории.</div>	
+			</div>
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Какими данными мне придется делиться для развертывания кампании?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">Только открытыми данными, такими как данные CRM-системы и веб данные.</div>	
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer id="contacts">
+	<div class="footerWrapper">
+		<div class="secondBlockFooter">
+			<div class="footerButton">Свяжитесь с нами!</div>
+			<div class='formMainWrapper'>
+				<form action='result.html' method='post'>
+					<span id='closeForm'>&times;</span>
+					<div>Мы свяжемся с вами!</div>
+					<div class='formElemWrapper'>
+						<label for='formEmail' >Email *</label>
+						<input name='formEmail' id= 'formEmail' type='email' placeholder='example@mail.ru' required>
+					</div>
+					<div class='formElemWrapper'>
+						<label for='formPhone'>Телефон *</label>
+						<input name='formPhone' id= 'formPhone' type='tel' placeholder='+7-XXX-XX-XX' pattern='[0-9]' required>
+					</div>
+					<div class='formElemWrapper'>
+						<textarea name='message' id='message' cols='10' rows='8' placeholder='Введите свое сообщение'></textarea>
+					</div>
+					<div>
+						<input name='policy' id='policy' type='checkbox' required>
+						<label for='policy'>Я ознакомился / ознакомилась с политикой конфиденциальности</label>
+					</div>
+					<div>
+						<button class='formButton' type='reset'>Очистить</button>
+						<button class='formButton' id='submitForm' type='submit'>Отправить</button>
+					</div>
+				</form>
+			</div>
+			<div class="footerLogoItems"> <!--
+				<a href="https://t.me/marja_mariia" target="_blank" rel="noopener"><img src="Images/Logos/logoTelegram.svg" alt="telegram logo" width="30" height="30"></a>
+				<a href="https://instagram.com/marja.mariia" target="_blank" rel="noopener"><img src="Images/Logos/logoInstagram.png" alt="instagram logo" width="30" height="30"></a>
+				<a href="https://vk.com/isakova.mariia" target="_blank" rel="noopener"><img src="Images/Logos/logoVK.svg" alt="VK logo" width="30" height="30"></a>
+			-->
+			</div>
+		</div>
+		<div class="firstBlockFooter">
+			<div class="footerAddress">
+			Россия, Петрозаводск<br>
+			&copy; 2021-2022 ООО Таргоритм<br>
+			&copy; 2021-2022 Targorithm, LLC
+			</div>
+			<hr>
+			<div class="footerDocumentation">
+			Политика конфиденциальности
+			</div>
+		</div>
+	</div>
+</footer>
+<script>
+//Sidebar menu initializers
+const menuSidebar = document.getElementById('burger');
+menuSidebar.addEventListener('click', changeSidebar);
+
+const sideBar = document.getElementById("sideBar");
+
+const sideBarBtn = sideBar.children[0].children[0];
+sideBarBtn.addEventListener('click', changeSidebar);
+
+const sideMenuRight = sideBar.children[1];
+sideMenuRight.addEventListener('click', changeSidebar);
+
+const sideMenuLink = sideBar.children[0].children[1];
+sideMenuLink.addEventListener('click', changeSidebar);
+
+//Carousel initializers
+const bodyScroll = document.body;
+
+const carousel = document.querySelector('.carouselWrapperMain');
+
+const carouselBannerContainer = carousel.children[1]; // container of slides
+const carouselBanner = carouselBannerContainer.children[0]; // container of slides
+const carouselNavigation = carousel.children[3]; // container of navigation dots
+const carouselNavigationList = carouselNavigation.children; // array of navigation dots;
+const leftButton = carousel.children[0];
+const rightButton = carousel.children[2];
+
+leftButton.addEventListener('mousedown', carouselBtnChange);
+rightButton.addEventListener('mousedown', carouselBtnChange);
+
+carouselNavigation.addEventListener('click', carouselNavChange);
+
+carouselBannerContainer.addEventListener('mousedown', carouselSlideChange);
+carouselBannerContainer.addEventListener('mouseup', carouselSlideChange);
+carouselBannerContainer.addEventListener('touchstart', carouselSlideChange);
+carouselBannerContainer.addEventListener('touchend', carouselSlideChange);
+
+//FAQ initializers
+const questionFAQ = document.getElementById("wrapperFaqID");
+questionFAQ.addEventListener('click', clickQuestionFAQ);
+
+//Feedback form initializers
+const formButton = document.querySelector('.footerButton');
+const modalForm = document.querySelector('.formMainWrapper'); 
+formButton.addEventListener('click', changeFormCondition);
+modalForm.addEventListener('click', changeFormCondition, false);
+
+</script>
+</body>
+</html>

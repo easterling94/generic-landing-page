@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="easterling94">
+<meta name="description" content="Создание работающих рекламных кампаний, персональный подход к каждому клиенту">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Таргоритм | Продвижение вашего бизнеса</title>
+<link rel="stylesheet" href="FAQ.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+</head>
+<body class="bodyClass">
+	<div id="FAQ" class="bodySec" style="scroll-margin-top: 80px;">
+		<h2>Часто задаваемые вопросы</h2>
+		<div id="wrapperFaqID" class="wrapperFaq">
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Гарантирует ли таргетинг увеличение конверсии?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">Как правило, таргетинг помогает увеличить конверсию продаж. Однако, другие не менее важные факторы, например профессиональный уровень персонала заказчика, также влияют на объем продаж.</div>
+			</div>
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Какие показатели самые главные в таргетинге?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">Кликабельность (CTR) и окупаемость (ROMI) рекламы.</div>
+			</div>
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Почему Instagram находится в рамках Facebook?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">Instagram принадлежит корпорации Facebook, поэтому все управление рекламой осуществляется через единые инструменты.</div>
+			</div>
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Может ли реклама в соцсетях расширить мой бизнес?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">В соцсетях вы можете связаться со своими клиентами из различных географических регионов с помощью таргетированной рекламы.</div>	
+			</div>
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Кому будет показываться моя реклама?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">Таргетинг предполагает показ вашей рекламы соответствующей целевой аудитории.</div>	
+			</div>
+			<div class="sectionFAQ">
+				<div class="sectionFAQquestion">
+					<div class="questionFAQ">Какими данными мне придется делиться для развертывания кампании?</div>
+					<div class="questionFAQbutton">+</div>
+				</div>
+				<div class="sectionFAQanswer">Только открытыми данными, такими как данные CRM-системы и веб данные.</div>	
+			</div>
+		</div>
+	</div>
+
+<script>
+const questionFAQ = document.getElementById("wrapperFaqID");
+questionFAQ.addEventListener("click", clickQuestionFAQ);
+
+function clickQuestionFAQ(event) {
+	const chosenElem = event.target;
+	if (chosenElem.className == "sectionFAQquestion") {
+		const nextSibling = chosenElem.nextElementSibling;
+		const nextSiblingTrueHeight = nextSibling.scrollHeight;
+		const childElem = chosenElem.children;
+			if (window.getComputedStyle(nextSibling).getPropertyValue("height") == "0px") {
+				chosenElem.style.backgroundColor = "rgba(130, 130, 180, 0.1)";
+				nextSibling.style.height = nextSiblingTrueHeight + "px";
+				childElem[1].classList.remove("questionFAQbuttonRotateBack");
+				childElem[1].classList.add("questionFAQbuttonRotate");
+			} else {
+				chosenElem.style.backgroundColor = "rgba(150, 150, 200, 0)";
+				nextSibling.style.height = "0px";
+				childElem[1].classList.add("questionFAQbuttonRotateBack");
+				childElem[1].classList.remove("questionFAQbuttonRotate");
+			}
+	} else if (chosenElem.className == "questionFAQ" || chosenElem.classList.contains("questionFAQbutton")) {
+		const parentElem = chosenElem.parentElement;
+		const uncleElement = chosenElem.parentElement.nextElementSibling;
+		const uncleElementTrueHeight = uncleElement.scrollHeight;
+		const buttonChild = chosenElem.parentElement.children;
+			if (window.getComputedStyle(uncleElement).getPropertyValue("height") == "0px") {
+				parentElem.style.backgroundColor = "rgba(130, 130, 180, 0.1)";
+				uncleElement.style.height = uncleElementTrueHeight + "px";
+				buttonChild[1].classList.remove("questionFAQbuttonRotateBack");
+				buttonChild[1].classList.add("questionFAQbuttonRotate");
+			} else {
+				parentElem.style.backgroundColor = "rgba(150, 150, 200, 0)";
+				uncleElement.style.height = "0px";
+				buttonChild[1].classList.add("questionFAQbuttonRotateBack");
+				buttonChild[1].classList.remove("questionFAQbuttonRotate");
+			}
+	}
+}
+</script>
+</body>
+</html>

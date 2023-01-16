@@ -1,0 +1,72 @@
+/********************
+
+CAROUSEL BLOCK
+
+********************/
+
+.carouselWrapperMain {
+	margin: 0px auto;
+	display: grid;
+	width: 300px;
+	grid-template-columns: 40px 220px 40px;
+	align-items: center;
+}
+.carouselWrapperMain svg {
+	background-color: rgb(200, 200, 200); 
+	cursor: pointer;
+}
+
+#carBtnRight {margin-left: 5px;}
+
+#carouselWrapper {
+	overflow: hidden;
+}
+
+.carouselWrapper {
+	display: flex;
+	position: relative;
+	left: 0;
+	transition: left 1s;
+}
+
+.carouselImg {
+	padding: 0px 100px;
+	margin: 0px 10px;
+	height: 300px;
+}
+
+.carouselImg1 {background-image: url("Images/carousel/1.jpg"); background-size: 100%;}
+.carouselImg2 {background-image: url("Images/carousel/2.jpg"); background-size: 100%;}
+.carouselImg3 {background-image: url("Images/carousel/3.jpg"); background-size: 100%;}
+.carouselImg4 {background-image: url("Images/carousel/4.jpg"); background-size: 100%;}
+.carouselImg5 {background-image: url("Images/carousel/5.jpg"); background-size: 100%;}
+.carouselImg6 {background-image: url("Images/carousel/6.jpg"); background-size: 100%;}
+
+.carouselNavigation {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 20px 30px;
+}
+
+.carouselNavigation > * {
+	width: 10px;
+	height: 10px;
+	border-radius: 6px;
+	border: 1px solid rgb(200, 200, 200);
+	background-color: rgb(200, 200, 200);
+	cursor: pointer;
+}
+
+.carouselNavigationActive {
+	border: 1px solid black;
+	background-color: black;
+}
+
+.disableBodyScroll {
+	overflow-y: hidden;
+	overflow-x: hidden;
+	height: 100%;
+}

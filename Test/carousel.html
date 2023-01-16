@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="easterling94">
+<meta name="description" content="Создание работающих рекламных кампаний, персональный подход к каждому клиенту">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Таргоритм | Продвижение вашего бизнеса</title>
+
+<link rel="stylesheet" href="carousel.css">
+</head>
+<body>
+<div>
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+</div>
+<br><br>
+
+<div class="carouselWrapperMain">
+	<svg width="35" height="60" id="carBtnLeft">
+		<path d="M23 13 L 10 30 L 23 45" style="fill: none; stroke: rgb(255, 255, 255); stroke-width: 2;"></path>
+	</svg>
+	<div id="carouselWrapper">
+		<div class="carouselWrapper">
+			<div class="carouselImg carouselImg1"></div>
+			<div class="carouselImg carouselImg2"></div>
+			<div class="carouselImg carouselImg3"></div>
+			<div class="carouselImg carouselImg4"></div>
+			<div class="carouselImg carouselImg5"></div>
+			<div class="carouselImg carouselImg6"></div>
+		</div>
+	</div>
+	<svg width="35" height="60" id="carBtnRight">
+		<path d="M12 15 L 25 30 L 12 45" style="fill: none; stroke: rgb(255, 255, 255); stroke-width: 2;"></path>
+	</svg>
+	<div class="carouselNavigation">
+		<div class="carouselNavigationActive"></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>
+
+<div>
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+	LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN LOREN IPSUN
+</div>
+
+<script>
+
+//Carousel initializers
+const bodyScroll = document.body;
+const carousel = document.querySelector(".carouselWrapperMain");
+
+const carouselBanner = carousel.children[1].children[0]; // container of slides
+const carouselNavigation = carousel.children[3]; // container of navigation dots
+const carouselNavigationList = carouselNavigation.children; // array of navigation dots;
+const leftButton = carousel.children[0];
+const rightButton = carousel.children[2];
+
+leftButton.addEventListener('mousedown', carouselBtnChange);
+rightButton.addEventListener('mousedown', carouselBtnChange);
+
+carouselNavigation.addEventListener('click', carouselNavChange);
+
+carouselBanner.addEventListener('mousedown', carouselSlideChange);
+carouselBanner.addEventListener('mouseup', carouselSlideChange);
+carouselBanner.addEventListener('touchstart', carouselSlideChange);
+carouselBanner.addEventListener('touchend', carouselSlideChange);
+
+let currentSlide = 1;
+let futureSlide;
+let carouselFrameWidth = 220;
+let carouselShift;
+let clientXstart = 0;
+let clientXend;
+let carouselSlideRatio;
+const carouselThreshold = 0.8;
+
+function carouselBtnChange(event) {
+	if (event.target.id == "carBtnLeft" || event.target.parentElement.id == "carBtnLeft") {
+		if (currentSlide > 1) {
+				futureSlide = currentSlide - 1;
+				carouselShift = (futureSlide - 1) * carouselFrameWidth;
+				return carouselSwipe();
+			} else {
+				futureSlide = [...carouselBanner.children].length;
+				carouselShift = (futureSlide - 1) * carouselFrameWidth;
+				return carouselSwipe();
+			}
+		} else if (event.target.id == "carBtnRight" || event.target.parentElement.id == "carBtnRight") {
+			if(currentSlide < 6) {
+				futureSlide = currentSlide + 1;
+				carouselShift = currentSlide * carouselFrameWidth;
+				return carouselSwipe();
+			} else {
+				futureSlide = 1;
+				carouselShift = (futureSlide - 1) * carouselFrameWidth;
+				return carouselSwipe();
+			}
+		}
+}
+
+function carouselNavChange(event) {
+	let carNavList = [...carouselNavigation.children];
+	if (carNavList.includes(event.target)) {
+		futureSlide = carNavList.indexOf(event.target) + 1;
+		carouselShift = (futureSlide - 1) * carouselFrameWidth;
+		return carouselSwipe();
+	}
+}
+
+function carouselSlideChange(event) {
+	if(event.type == "mousedown") {
+		clientXstart = event.clientX;
+	} else if (event.type == "touchstart") {
+		clientXstart = Math.round(event.touches[0].clientX);
+	} else if (event.type == "mouseup") {
+		clientXend = event.clientX;
+		return carouselSlideChangeFinish();
+	} else if (event.type == "touchend") {
+		clientXend = Math.round(event.changedTouches[0].clientX);
+		return carouselSlideChangeFinish();
+	};
+}
+
+function carouselSlideChangeFinish() {
+	carouselSlideRatio = Math.min(clientXstart, clientXend) / Math.max(clientXstart, clientXend);
+	if(carouselSlideRatio < carouselThreshold && carouselSlideRatio != 0){
+		if (clientXstart < clientXend) {
+			if (currentSlide > 1) {
+				futureSlide = currentSlide - 1;
+				carouselShift = (futureSlide - 1) * carouselFrameWidth;
+				return carouselSwipe();
+			} else {
+				futureSlide = [...carouselBanner.children].length;
+				carouselShift = (futureSlide - 1) * carouselFrameWidth;
+				return carouselSwipe();
+			}
+		} else {
+			if(currentSlide < 6) {
+				futureSlide = currentSlide + 1;
+				carouselShift = currentSlide * carouselFrameWidth;
+				return carouselSwipe();
+			} else {
+				futureSlide = 1;
+				carouselShift = (futureSlide - 1) * carouselFrameWidth;
+				return carouselSwipe();
+			}
+		};
+	}
+}
+
+function carouselSwipe() {
+	carouselBanner.style.left = "-" + carouselShift + "px";
+	carouselNavigationList[currentSlide - 1].classList.remove("carouselNavigationActive");
+	carouselNavigationList[futureSlide - 1].classList.add("carouselNavigationActive");
+	currentSlide = futureSlide;
+}
+
+/*************************
+*
+* CAROUSEL FUNCTIONS
+*
+*************************/
+/* let clientXstart;
+let clientXend;
+let carouselShift = 0;
+let carouselFrameWidth = 220;
+let carouselSlide = 1;
+
+function carouselEvent(event) {
+	switch (event.type) {
+		case "mousedown":
+			clientXstart = event.clientX;
+			break;
+		case "mouseup":
+			clientXend = event.clientX;
+			if (clientXstart > clientXend) {
+				if (carouselSlide < carouselNavigationChildren.length) {
+					carouselShift += carouselFrameWidth;
+					carouselBanner.style.left = "-" + carouselShift + "px";
+					carouselNavigationChildren[carouselSlide-1].classList.remove("carouselNavigationChosen");
+					carouselNavigationChildren[carouselSlide-1].classList.add("carouselNavigationNotChosen");
+					carouselNavigationChildren[carouselSlide].classList.remove("carouselNavigationNotChosen");
+					carouselNavigationChildren[carouselSlide].classList.add("carouselNavigationChosen");
+					leftButton.classList.remove("carouselButtonNotAble");
+					leftButton.classList.add("carouselButtonAble");
+					carouselSlide ++;
+					if (carouselSlide == carouselNavigationChildren.length) {
+						rightButton.classList.remove("carouselButtonAble");
+						rightButton.classList.add("carouselButtonNotAble");
+					}
+				}
+			}
+			else if (clientXstart < clientXend) {
+				if (carouselSlide != 1) {
+					carouselShift -= carouselFrameWidth;
+					carouselBanner.style.left = "-" + carouselShift + "px";
+					carouselNavigationChildren[carouselSlide-1].classList.remove("carouselNavigationChosen");
+					carouselNavigationChildren[carouselSlide-1].classList.add("carouselNavigationNotChosen");
+					carouselNavigationChildren[carouselSlide-2].classList.remove("carouselNavigationNotChosen");
+					carouselNavigationChildren[carouselSlide-2].classList.add("carouselNavigationChosen");
+					rightButton.classList.remove("carouselButtonNotAble");
+					rightButton.classList.add("carouselButtonAble");
+					carouselSlide --;
+					if (carouselSlide == 1) {
+						leftButton.classList.remove("carouselButtonAble");
+						leftButton.classList.add("carouselButtonNotAble");
+					}
+				}
+			}
+			break;
+		case "touchstart":
+			clientXstart = event.touches[0].clientX;
+			bodyScroll.classList.add("disableBodyScroll");
+			break;
+		case "touchend":
+			clientXend = event.changedTouches[0].clientX;
+			bodyScroll.classList.remove("disableBodyScroll");
+			if (clientXstart > clientXend) {
+				if (carouselSlide < carouselNavigationChildren.length) {
+					carouselShift += carouselFrameWidth;
+					carouselBanner.style.left = "-" + carouselShift + "px";
+					carouselNavigationChildren[carouselSlide-1].classList.remove("carouselNavigationChosen");
+					carouselNavigationChildren[carouselSlide-1].classList.add("carouselNavigationNotChosen");
+					carouselNavigationChildren[carouselSlide].classList.remove("carouselNavigationNotChosen");
+					carouselNavigationChildren[carouselSlide].classList.add("carouselNavigationChosen");
+					leftButton.classList.remove("carouselButtonNotAble");
+					leftButton.classList.add("carouselButtonAble");
+					carouselSlide ++;
+					if (carouselSlide == carouselNavigationChildren.length) {
+						rightButton.classList.remove("carouselButtonAble");
+						rightButton.classList.add("carouselButtonNotAble");
+					}
+				}
+			}
+			else if (clientXstart < clientXend) {
+				if (carouselSlide != 1) {
+					carouselShift -= carouselFrameWidth;
+					carouselBanner.style.left = "-" + carouselShift + "px";
+					carouselNavigationChildren[carouselSlide-1].classList.remove("carouselNavigationChosen");
+					carouselNavigationChildren[carouselSlide-1].classList.add("carouselNavigationNotChosen");
+					carouselNavigationChildren[carouselSlide-2].classList.remove("carouselNavigationNotChosen");
+					carouselNavigationChildren[carouselSlide-2].classList.add("carouselNavigationChosen");
+					rightButton.classList.remove("carouselButtonNotAble");
+					rightButton.classList.add("carouselButtonAble");
+					carouselSlide --;
+					if (carouselSlide == 1) {
+						leftButton.classList.remove("carouselButtonAble");
+						leftButton.classList.add("carouselButtonNotAble");
+					}
+				}
+			}
+			break;
+	}
+}
+
+function carouselEventNavigation(event) {
+	const chosenElem = event.target;
+	const previousSlide = carouselSlide;
+	if(chosenElem.classList.contains("carouselNavegationElement")) {
+		const chosenElemParent = chosenElem.parentElement.children;
+		const chosenElemParentArray = Array.prototype.slice.call(chosenElemParent);
+		const chosenElemIndex = chosenElemParentArray.indexOf(chosenElem);
+		carouselSlide = chosenElemIndex + 1;
+		carouselShift = carouselFrameWidth * (carouselSlide - 1);
+		carouselBanner.style.left = "-" + carouselShift + "px";
+		carouselNavigationChildren[previousSlide-1].classList.remove("carouselNavigationChosen");
+		carouselNavigationChildren[previousSlide-1].classList.add("carouselNavigationNotChosen");
+		carouselNavigationChildren[carouselSlide-1].classList.remove("carouselNavigationNotChosen");
+		carouselNavigationChildren[carouselSlide-1].classList.add("carouselNavigationChosen");
+		if (carouselSlide == carouselNavigationChildren.length) {
+			leftButton.classList.remove("carouselButtonNotAble");
+			leftButton.classList.add("carouselButtonAble");
+			rightButton.classList.remove("carouselButtonAble");
+			rightButton.classList.add("carouselButtonNotAble");
+		} else if (carouselSlide == 1) {
+			leftButton.classList.remove("carouselButtonAble");
+			leftButton.classList.add("carouselButtonNotAble");
+			rightButton.classList.remove("carouselButtonNotAble");
+			rightButton.classList.add("carouselButtonAble");
+		} else {
+			leftButton.classList.remove("carouselButtonNotAble");
+			leftButton.classList.add("carouselButtonAble");
+			rightButton.classList.remove("carouselButtonNotAble");
+			rightButton.classList.add("carouselButtonAble");
+		}
+	}
+}
+
+function carouselBtnRight(event) {
+	const chosenElem = event.target;
+	if (chosenElem.classList.contains("carouselButton")) {
+		if (carouselSlide < carouselNavigationChildren.length) {
+			carouselShift += carouselFrameWidth;
+			carouselBanner.style.left = "-" + carouselShift + "px";
+			carouselNavigationChildren[carouselSlide-1].classList.remove("carouselNavigationChosen");
+			carouselNavigationChildren[carouselSlide-1].classList.add("carouselNavigationNotChosen");
+			carouselNavigationChildren[carouselSlide].classList.remove("carouselNavigationNotChosen");
+			carouselNavigationChildren[carouselSlide].classList.add("carouselNavigationChosen");
+			leftButton.classList.remove("carouselButtonNotAble");
+			leftButton.classList.add("carouselButtonAble");
+			carouselSlide ++;
+			if (carouselSlide == carouselNavigationChildren.length) {
+				rightButton.classList.remove("carouselButtonAble");
+				rightButton.classList.add("carouselButtonNotAble");
+			}
+		}
+	}
+}
+
+function carouselBtnLeft(event) {
+	const chosenElem = event.target;
+	if (chosenElem.classList.contains("carouselButton")) {
+		if (carouselSlide != 1) {
+			carouselShift -= carouselFrameWidth;
+			carouselBanner.style.left = "-" + carouselShift + "px";
+			carouselNavigationChildren[carouselSlide-1].classList.remove("carouselNavigationChosen");
+			carouselNavigationChildren[carouselSlide-1].classList.add("carouselNavigationNotChosen");
+			carouselNavigationChildren[carouselSlide-2].classList.remove("carouselNavigationNotChosen");
+			carouselNavigationChildren[carouselSlide-2].classList.add("carouselNavigationChosen");
+			rightButton.classList.remove("carouselButtonNotAble");
+			rightButton.classList.add("carouselButtonAble");
+			carouselSlide --;
+			if (carouselSlide == 1) {
+				leftButton.classList.remove("carouselButtonAble");
+				leftButton.classList.add("carouselButtonNotAble");
+			}
+		}
+	}
+}
+*/
+</script>
+
+</body>
+</html>

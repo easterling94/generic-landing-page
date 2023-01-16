@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='form.css'>
+    <title>Document</title>
+</head>
+<body>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam harum recusandae ex voluptatibus est veritatis expedita mollitia cumque soluta praesentium, eum ut, debitis nam enim illo, optio reprehenderit eligendi repellendus minima aut alias quibusdam at aspernatur. Autem sapiente reprehenderit dolorem quod eius voluptatibus ipsum, est provident maiores ipsa cumque exercitationem quos, architecto animi obcaecati sit recusandae unde facere ullam, aspernatur delectus. Expedita placeat, architecto magni sapiente, ut voluptates quaerat suscipit labore ad amet provident cum officiis iure corrupti illum est libero quod voluptate possimus, obcaecati cumque quidem nisi alias minus? Ex aliquam itaque ab numquam nobis maiores libero! A, fuga!</p>
+    <div class='test'>
+        PUSH ME!
+    </div>
+    
+    <div class='formMainWrapper'>
+        <form action='result.html' method='post'>
+            <span id='closeForm'>&times;</span>
+            <div>Мы свяжемся с вами!</div>
+            <div class='formElemWrapper'>
+                <label for='formEmail' >Email *</label>
+                <input name='formEmail' id= 'formEmail' type='email' placeholder='example@mail.ru' required>
+            </div>
+            <div class='formElemWrapper'>
+                <label for='formPhone'>Телефон *</label>
+                <input name='formPhone' id= 'formPhone' type='tel' placeholder='+7-XXX-XX-XX' pattern='[0-9]' required>
+            </div>
+            <div class='formElemWrapper'>
+                <textarea name='message' id='message' cols='10' rows='8' placeholder='Введите свое сообщение'></textarea>
+            </div>
+            <div>
+                <input name='policy' id='policy' type='checkbox' required>
+                <label for='policy'>Я ознакомился / ознакомилась с политикой конфиденциальности</label>
+            </div>
+            <div>
+                <button class='formButton' type='reset'>Очистить</button>
+                <button class='formButton' id='submitForm' type='submit'>Отправить</button>
+            </div>
+        </form>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore asperiores dolor officia provident pariatur quisquam praesentium repudiandae magni, libero beatae ullam, officiis illum quod molestiae incidunt cupiditate, nobis dicta sunt. Saepe velit ipsa maiores? Maiores quod corrupti placeat officiis mollitia eligendi impedit, accusantium, neque enim, aliquid ipsa blanditiis in libero at laborum! Consequuntur iste, nisi quo atque molestias rerum eos cupiditate maxime dolorum in eveniet, accusantium cum voluptas ipsa sit soluta non cumque id odit aut! Maiores, error labore, explicabo eaque dolores voluptatum eius nesciunt adipisci hic dolore provident cumque sint aliquam natus ipsa! Architecto nesciunt incidunt aliquam explicabo. Nulla!</p>
+<script>
+    const formButton = document.querySelector('.test');
+    const modalForm = document.querySelector('.formMainWrapper'); 
+    formButton.addEventListener('click', changeFormCondition);
+    modalForm.addEventListener('click', changeFormCondition, false);
+    let formConditionCheck = 0;
+
+    function changeFormCondition(e) {
+        
+        formConditionCheck == 0 ? formOpen() : formClose(e);
+        function formOpen () {
+            modalForm.style.display = 'initial';
+            formConditionCheck = 1;
+            document.body.classList.add('modalBoxOpened');
+        }
+        function formClose(e) {
+            if (e.target.className == 'formMainWrapper' || e.target.id == 'submitForm' || e.target.id == 'closeForm') {
+            modalForm.style.display = 'none';
+            document.body.classList.remove('modalBoxOpened');
+            formConditionCheck = 0;
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

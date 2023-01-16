@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Test</title>
+<link rel="stylesheet" href="burger.css">
+</head>
+<body>
+
+	<header>
+		<svg id="burger" width="45" height="45">
+			<line x1="0" x2="45" y1="15" y2="15" stroke="black" stroke-width="5"/>
+			<line x1="0" x2="45" y1="30" y2="30" stroke="black" stroke-width="5"/>
+		</svg>
+		<a href="./index.html">
+			<img src="Images/Logos/logo2.svg" alt="targorithmLogo" width="200" height="45">
+		</a>
+		<nav>
+			<div><a href=#services>УСЛУГИ</a></div>
+			<div><a href=#clients>КЛИЕНТЫ</a></div>
+			<div><a href=#FAQ>FAQ</a></div>
+			<div><a href=#contacts>КОНТАКТЫ</a></div>
+		</nav>
+	</header>
+
+	<div id="sideBar">
+		<div class="sideBarLeft">
+			<div>&times;</div>
+			<div>
+				<div><a href=#services>УСЛУГИ</a></div>
+				<div><a href=#clients>КЛИЕНТЫ</a></div>
+				<div><a href=#FAQ>FAQ</a></div>
+				<div><a href=#contacts>КОНТАКТЫ</a></div>
+			</div>
+			<!--<div id="logoItems">
+				<a href="https://t.me/marja_mariia" target="_blank" rel="noopener"><img src="Images/Logos/logoTelegram.svg" alt="telegram logo" width="30" height="30"></a>
+				<a href="https://instagram.com/marja.mariia" target="_blank" rel="noopener"><img src="Images/Logos/logoInstagram.png" alt="instagram logo" width="30" height="30"></a>
+				<a href="https://vk.com/isakova.mariia" target="_blank" rel="noopener"><img src="Images/Logos/logoVK.svg" alt="VK logo" width="30" height="30"></a>
+			</div> -->
+		</div>
+		<div class="sideBarRight"></div>
+	</div>
+<div>
+	<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio eligendi officia hic, maiores qui saepe fuga ipsum laborum assumenda consectetur?</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ullam quaerat at dolore exercitationem voluptas repellat vitae! Dignissimos perferendis quasi, adipisci possimus repudiandae dolorem voluptas eveniet eum fuga? Quaerat vel beatae praesentium doloribus corrupti rem sunt debitis? Harum quidem assumenda expedita illum vel maxime cum. Qui repellat nobis architecto? Error minus odit repudiandae nesciunt possimus quos sequi doloremque quibusdam iusto facere, nostrum praesentium nam dolore! Magni, quibusdam ut. Itaque facere dolorum ratione rem. Vero, quis eos reprehenderit, harum officiis dolores quo fugiat deserunt nam est accusamus commodi veritatis quos! Aperiam at, illum tenetur similique quis atque obcaecati saepe fugiat veritatis.</p>
+</div>
+<script>
+	const menuSidebar = document.getElementById("burger");
+	menuSidebar.addEventListener('click', changeSidebar);
+	
+	const sideBar = document.getElementById("sideBar");
+
+	const sideBarBtn = sideBar.children[0].children[0];
+	sideBarBtn.addEventListener('click', changeSidebar);
+
+	let sideBarState = 0;
+
+	function changeSidebar() {
+		if(sideBarState == 0){
+			sideBarState = 1;
+			sideBar.style.width = "100vw";
+			function changeSidebarInner() {
+				let sideBarChildren = sideBar.children[0].children;
+				sideBarChildren = [...sideBarChildren];
+				sideBarChildren.forEach(element => {
+					element.style.display = "block";
+				});
+				sideBar.children[1].style.opacity = "0.5";
+			}
+			setTimeout(changeSidebarInner, 1000);
+		} else {
+			sideBarState = 0;
+			sideBar.style.width = "0vw";
+			function changeSidebarInner() {
+				let sideBarChildren = sideBar.children[0].children;
+				sideBarChildren = [...sideBarChildren];
+				sideBarChildren.forEach(element => {
+					element.style.display = "none";
+				});
+				sideBar.children[1].style.opacity = "0";
+			}
+			return changeSidebarInner();
+		}
+		
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+body {background-color: pink;}
+:root {
+	--firstColor: rgb(10, 10, 150);
+	--secondColor: rgb(200, 200, 250);
+	--backgroundColor: rgb(240, 240, 240);
+	--scrollBarWidth: 0px;
+}
+
+body p {font-size: 200%;}
+/********************
+
+HEADER BLOCK
+
+********************/
+header {display: flex; justify-content: center; background-color: white;}
+header > svg {display: none; padding-left: 40px; cursor: pointer;}
+header > a {width: 200px; height: 45px; cursor: pointer;}
+header > nav {display: flex; justify-content: space-between; align-items: center;}
+header > nav > div {padding: 0px 20px;}
+header > nav a {font-weight: bold; text-decoration: none; transition-duration: 0.5s;}
+header > nav a:link, a:visited {color: black;}
+header > nav a:hover {color: var(--secondColor);}
+
+@media only screen and (max-width: 820px) {
+    header {justify-content: space-between;}
+    header > svg {display: initial;}
+    header > nav {display: none;}
+}
+
+/********************
+
+SIDEBAR BLOCK
+
+********************/
+
+#sideBar {display: flex; position: fixed; top: 0; left: 0; height: 100vh; width: 0px; transition: 1s; overflow: hidden;}
+    .sideBarLeft {width: 60%; background-color: black; padding-top: 10px;}
+    .sideBarLeft > * {display: none; margin-left: 40px;}
+    .sideBarLeft > div:nth-child(1) {color: white; font-size: 200%; width: 30px;}
+    .sideBarLeft > div:nth-child(2) > div {margin: 40px 40px 40px auto; border-bottom: 1px solid white;}
+    .sideBarLeft a {color: white; text-decoration: none;}
+    .sideBarRight {width: 40%; background-color: black; opacity: 0; transition: 0.5s;}
